@@ -3,7 +3,7 @@ guid: 90415434006a2674ca23f09b5b84dae4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -74,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -86,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -98,6 +103,33 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -2004,99 +2036,98 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Fence_1: 1780899117
+      Fence_10: -1905867665
+      Fence_11: 1894116815
+      Fence_12: -636298160
+      Fence_13: 1108112622
+      Fence_14: 1211655178
+      Fence_2: -805990701
+      Fence_3: -1942538963
+      Fence_4: 1381841118
+      Fence_5: -1029501715
+      Fence_6: 254469443
+      Fence_7: -1423759358
+      Fence_8: -358899299
+      Fence_9: -847439027
+      Ground_0: 1756595401
+      Ground_1: 306725173
+      Ground_10: -1205346067
+      Ground_11: 569791692
+      Ground_12: -1391436247
+      Ground_13: -639584227
+      Ground_14: -2141573961
+      Ground_15: 1733863957
+      Ground_16: -387133430
+      Ground_17: 1735501127
+      Ground_18: 1227965698
+      Ground_19: 2141300823
+      Ground_2: 328513028
+      Ground_20: -228222824
+      Ground_21: 258292316
+      Ground_22: -794729633
+      Ground_23: -1951081078
+      Ground_24: -1298739208
+      Ground_25: -732908121
+      Ground_26: 869168643
+      Ground_27: 116718924
+      Ground_28: -514224809
       Ground_29: 191027068
+      Ground_3: 128787121
+      Ground_30: 1284489429
+      Ground_31: 1670800943
+      Ground_32: -1144797759
+      Ground_33: -1570263469
+      Ground_34: 112128048
+      Ground_35: -207285233
+      Ground_36: 319114485
+      Ground_37: 1359238281
       Ground_38: 1825007750
       Ground_39: -2117476792
-      Ground_10: -1205346067
-      Ground_16: -387133430
-      Ground_13: -639584227
-      Ground_18: 1227965698
-      Ground_24: -1298739208
-      Ground_67: -1996901582
-      Ground_32: -1144797759
-      Ground_66: -469315038
-      Ground_65: -952274317
-      Ground_25: -732908121
-      Ground_41: 187411312
-      Ground_0: 1756595401
-      Ground_75: 1085871148
-      Ground_53: -3059783
-      Ground_55: 592234362
-      Ground_71: -480092301
-      Ground_17: 1735501127
-      Ground_44: -314629645
-      Fence_10: -1905867665
-      Ground_56: -1091599614
-      Fence_2: -805990701
-      Ground_49: -470729495
-      Fence_7: -1423759358
-      Ground_42: -229146121
-      Ground_34: 112128048
-      Ground_7: 381549596
-      Ground_21: 258292316
-      Fence_3: -1942538963
-      Ground_47: -187451617
-      Fence_8: -358899299
-      Fence_13: 1108112622
-      Ground_12: -1391436247
-      Ground_58: 1785277608
-      Fence_6: 254469443
       Ground_4: -1089644537
-      Ground_33: -1570263469
-      Ground_43: -1222123228
-      Ground_59: -1668720683
-      Ground_46: -999249189
-      Fence_14: 1211655178
-      Ground_57: 550244486
-      Ground_69: -1963598315
-      Fence_12: -636298160
-      Ground_15: 1733863957
-      Ground_9: -1595600028
-      Ground_51: 2085172640
-      Ground_23: -1951081078
       Ground_40: 1223149239
-      Fence_1: 1780899117
-      Ground_36: 319114485
-      Ground_11: 569791692
-      Ground_5: -2008659656
-      Ground_73: 418603614
-      Ground_28: -514224809
-      Fence_9: -847439027
-      Ground_6: 1894427633
+      Ground_41: 187411312
+      Ground_42: -229146121
+      Ground_43: -1222123228
+      Ground_44: -314629645
       Ground_45: -431589905
-      Ground_70: 1354044699
-      Ground_35: -207285233
-      Ground_63: -202162210
-      Ground_31: 1670800943
-      Ground_62: 451283111
-      Ground_60: 1070009671
-      Ground_52: 700696348
-      Ground_22: -794729633
-      Fence_5: -1029501715
-      Ground_37: 1359238281
-      Ground_74: -765039820
-      Ground_64: -2107690387
-      Ground_20: -228222824
-      Ground_30: 1284489429
+      Ground_46: -999249189
+      Ground_47: -187451617
       Ground_48: -1199573718
-      Fence_11: 1894116815
-      Ground_27: 116718924
-      Ground_3: 128787121
-      Ground_72: 639359111
-      Ground_54: -1312774600
-      Ground_8: 462209644
-      Ground_61: -1368549408
-      Ground_68: -1006962606
-      Fence_4: 1381841118
-      Ground_26: 869168643
-      Ground_2: 328513028
-      Ground_19: 2141300823
-      Ground_14: -2141573961
+      Ground_49: -470729495
+      Ground_5: -2008659656
       Ground_50: 1268418789
-      Ground_1: 306725173
-  spritePackingTag: 
+      Ground_51: 2085172640
+      Ground_52: 700696348
+      Ground_53: -3059783
+      Ground_54: -1312774600
+      Ground_55: 592234362
+      Ground_56: -1091599614
+      Ground_57: 550244486
+      Ground_58: 1785277608
+      Ground_59: -1668720683
+      Ground_6: 1894427633
+      Ground_60: 1070009671
+      Ground_61: -1368549408
+      Ground_62: 451283111
+      Ground_63: -202162210
+      Ground_64: -2107690387
+      Ground_65: -952274317
+      Ground_66: -469315038
+      Ground_67: -1996901582
+      Ground_68: -1006962606
+      Ground_69: -1963598315
+      Ground_7: 381549596
+      Ground_70: 1354044699
+      Ground_71: -480092301
+      Ground_72: 639359111
+      Ground_73: 418603614
+      Ground_74: -765039820
+      Ground_75: 1085871148
+      Ground_8: 462209644
+      Ground_9: -1595600028
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -78,30 +78,30 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: 6f2fcdc189458914eb8a323f19e3a27b, type: 3}
   injectionPoint: 550
   preset: 6
-  pixelResolutionX: 240
-  pixelResolutionY: 270
-  screenBend: 8.3
-  screenOverscan: 1.5
-  vignetteSize: 5.7
-  vignetteSmooth: 2
-  vignetteRound: 13
+  pixelResolutionX: 480
+  pixelResolutionY: 300
+  screenBend: 0
+  screenOverscan: 0
+  vignetteSize: 0
+  vignetteSmooth: 0
+  vignetteRound: 2
   blur: 1
-  bleed: 0.1
-  smidge: 0
-  scanlinesStrength: 9
-  apertureStrength: 4
+  bleed: 1
+  smidge: 2
+  scanlinesStrength: 8.4
+  apertureStrength: 1
   shadowlines: 2
-  shadowlinesSpeed: 4.6
-  shadowlinesAlpha: 0.204
-  noiseSize: 26
-  noiseSpeed: 7.2
-  noiseAlpha: 0.25
+  shadowlinesSpeed: 2
+  shadowlinesAlpha: 0.1
+  noiseSize: 10
+  noiseSpeed: 2
+  noiseAlpha: 0.072
   brightness: 0
-  contrast: 1.12
-  gamma: 1.18
-  red: 1.15
-  green: 1.16
-  blue: 1.18
+  contrast: 1
+  gamma: 1
+  red: 1
+  green: 1
+  blue: 1
   chromaticAberration: 1.5
   redOffset: {x: 0.15, y: 0.15}
   blueOffset: {x: 0, y: -0.21}

@@ -3,7 +3,7 @@ guid: e5a5cfed6256b84419bb891ec5c0e880
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -74,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -86,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -98,6 +103,33 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -534,29 +566,28 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      LampPost_4: 430704771
-      LampPost_1: -800656834
-      Stone_1: -130378614
-      Grass_2: -1952039715
       Barrel_1: -244050205
-      Stone_4: 539769164
-      Stone_2: 714953183
-      Tree_3: 1807875508
-      Grass_1: 144661300
-      Grass_3: -2056236738
-      Box_2: -1929748566
-      Tree_1: 304821771
-      Flower_1: -64843420
-      Bush_1: 543986962
-      LampPost_3: 433280720
-      Stone_3: 2095184331
-      Tree_2: -1688256310
-      Flower_2: -610572446
       Box_1: -181926759
+      Box_2: -1929748566
+      Bush_1: 543986962
+      Flower_1: -64843420
+      Flower_2: -610572446
+      Grass_1: 144661300
+      Grass_2: -1952039715
+      Grass_3: -2056236738
+      LampPost_1: -800656834
       LampPost_2: -284021565
-  spritePackingTag: 
+      LampPost_3: 433280720
+      LampPost_4: 430704771
+      Stone_1: -130378614
+      Stone_2: 714953183
+      Stone_3: 2095184331
+      Stone_4: 539769164
+      Tree_1: 304821771
+      Tree_2: -1688256310
+      Tree_3: 1807875508
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

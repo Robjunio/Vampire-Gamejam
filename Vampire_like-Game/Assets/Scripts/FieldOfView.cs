@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
@@ -12,6 +10,8 @@ public class FieldOfView : MonoBehaviour
 
     [SerializeField] private float viewDistance;
 
+    [SerializeField] private Transform aim;
+
     void Start()
     {
         mesh = new Mesh();
@@ -22,9 +22,10 @@ public class FieldOfView : MonoBehaviour
     {
         Vector3 origin = Vector3.zero;
 
-        int rayCount = 50;
+        int rayCount = 15;
         float angle = startingAngle;
         float angleIncrease = fov / rayCount;
+
 
         Vector3[] vertices = new Vector3[rayCount + 1 + 1];
         Vector2[] uv = new Vector2[vertices.Length];
@@ -76,7 +77,10 @@ public class FieldOfView : MonoBehaviour
 
     public void SetAimDirection(Vector3 aimDirection)
     {
-        startingAngle = GetAngleFromVectorFloat(aimDirection) + fov / 2f ;
+        var angle = GetAngleFromVectorFloat(aimDirection);
+        startingAngle = angle + fov / 2f;
+
+        aim.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private float GetAngleFromVectorFloat(Vector3 dir)

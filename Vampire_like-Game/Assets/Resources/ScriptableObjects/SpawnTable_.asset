@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a7f0c0a8a01464f9d01e82168d7f35, type: 3}
+  m_Name: SpawnTable_
+  m_EditorClassIdentifier: 
+  table:
+  - enemyPool: 30
+    probability_enemy_1: 100
+    probability_enemy_2: 0
+    probability_enemy_3: 0
+  - enemyPool: 40
+    probability_enemy_1: 100
+    probability_enemy_2: 0
+    probability_enemy_3: 0
+  - enemyPool: 50
+    probability_enemy_1: 90
+    probability_enemy_2: 10
+    probability_enemy_3: 0
+  - enemyPool: 60
+    probability_enemy_1: 85
+    probability_enemy_2: 15
+    probability_enemy_3: 0
+  - enemyPool: 70
+    probability_enemy_1: 80
+    probability_enemy_2: 20
+    probability_enemy_3: 0
+  - enemyPool: 80
+    probability_enemy_1: 75
+    probability_enemy_2: 20
+    probability_enemy_3: 5
+  - enemyPool: 90
+    probability_enemy_1: 65
+    probability_enemy_2: 30
+    probability_enemy_3: 5
+  - enemyPool: 100
+    probability_enemy_1: 50
+    probability_enemy_2: 40
+    probability_enemy_3: 10
+  - enemyPool: 120
+    probability_enemy_1: 50
+    probability_enemy_2: 40
+    probability_enemy_3: 10
+  - enemyPool: 160
+    probability_enemy_1: 50
+    probability_enemy_2: 40
+    probability_enemy_3: 10

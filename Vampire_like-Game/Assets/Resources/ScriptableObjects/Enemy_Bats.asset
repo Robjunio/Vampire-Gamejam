@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb872eb0b9cf47e44aefb0699b48f941, type: 3}
+  m_Name: Enemy_Bats
+  m_EditorClassIdentifier: 
+  StatsByHour:
+  - ProbabilityToBeSpecial: 0
+    Health: 20
+    Damage: 10
+    Speed: 0.5
+  - ProbabilityToBeSpecial: 1
+    Health: 40
+    Damage: 20
+    Speed: 0.6
+  - ProbabilityToBeSpecial: 2
+    Health: 60
+    Damage: 30
+    Speed: 0.7
+  - ProbabilityToBeSpecial: 5
+    Health: 90
+    Damage: 40
+    Speed: 0.8
+  - ProbabilityToBeSpecial: 8
+    Health: 100
+    Damage: 50
+    Speed: 0.9
+  - ProbabilityToBeSpecial: 10
+    Health: 120
+    Damage: 60
+    Speed: 0.9
+  - ProbabilityToBeSpecial: 15
+    Health: 140
+    Damage: 70
+    Speed: 1
+  - ProbabilityToBeSpecial: 20
+    Health: 160
+    Damage: 80
+    Speed: 1.1
+  - ProbabilityToBeSpecial: 30
+    Health: 180
+    Damage: 90
+    Speed: 1.1
+  - ProbabilityToBeSpecial: 30
+    Health: 200
+    Damage: 100
+    Speed: 1.1

@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    [SerializeField] Slider timmer;
 
     public delegate void TimeElapsed(int currentHour);
     public static event TimeElapsed HourPassed;
@@ -10,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public float GameTime;
 
-    [SerializeField] float counter;
+    float counter;
     int currentHour;
 
     private void Awake()
@@ -41,6 +44,8 @@ public class GameManager : MonoBehaviour
             currentHour++;
             OnHourPassed(currentHour);
         }
+
+        timmer.value = Mathf.Clamp01(counter/GameTime);
     }
 
     public float GetCurrentTime()

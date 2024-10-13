@@ -18,10 +18,10 @@ MonoBehaviour:
   preset: 6
   pixelResolutionX: 480
   pixelResolutionY: 300
-  screenBend: 0
+  screenBend: 10
   screenOverscan: 0
-  vignetteSize: 0
-  vignetteSmooth: 0
+  vignetteSize: 4.04
+  vignetteSmooth: 4.83
   vignetteRound: 2
   blur: 0
   bleed: 0

@@ -1,3 +1,5 @@
+using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -16,9 +18,19 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private Transform target;
 
+    private ObjectPool smallHit;
+    private List<GameObject> smallHits;
+    private ObjectPool largeHit;
+
+    private List<GameObject> largeHits;
+
     float damage;
     float life;
     float speed;
+
+    bool dead;
+
+    Tween alpha;
     
     private void OnDie()
     {
@@ -32,10 +44,15 @@ public class Enemy : MonoBehaviour
     {
         TryGetComponent(out animator);
         TryGetComponent(out rb);
+
+        smallHits = new List<GameObject>();
+        largeHits = new List<GameObject>();
     }
 
     private void Update()
     {
+        if (dead) return;
+
         Vector2 dir = target.position - transform.position;
         dir = dir.normalized;
         animator.SetFloat("X", dir.x);
@@ -54,8 +71,13 @@ public class Enemy : MonoBehaviour
         this.level = level;
     }
 
-    public void SetInfo(EnemyInformation info)
+    public void SetInfo(EnemyInformation info, ObjectPool big, ObjectPool small)
     {
+        dead = false;
+
+        largeHit = big;
+        smallHit = small;
+
         if (info != null)
         {
             Info = info;
@@ -81,28 +103,97 @@ public class Enemy : MonoBehaviour
         {
             animator = Info.Animator;
         }
+
+        // Tween the alpha of a color called myColor to 0 in 1 second
+        alpha = DOTween.ToAlpha(() => BehindMaskRenderer.color, x => BehindMaskRenderer.color = x, 0, 1);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (dead) return;
         if (collision.CompareTag("Mask"))
         {
             BehindMaskRenderer.enabled = false;
             MaskRenderer.enabled = true;
         }
+        if (collision.CompareTag("Weapon"))
+        {
+            GetHit(collision);
+        }
+    }
+
+    private void GetHit(Collider2D collision)
+    {
+        life -= 10;
+        if (life > 0)
+        {
+            var obj = smallHit.GetFreeObject();
+            obj.transform.position = collision.gameObject.transform.position;
+            obj.SetActive(true);
+            smallHits.Add(obj);
+        }
+        else
+        {
+            Dead();
+            var obj = largeHit.GetFreeObject();
+            obj.transform.position = collision.gameObject.transform.position;
+            obj.SetActive(true);
+            largeHits.Add(obj);
+        }
+    }
+
+    private void Dead()
+    {
+        dead = true;
+        BehindMaskRenderer.enabled = false;
+        MaskRenderer.enabled = false;
+
+        alpha.Complete();
+
+        Invoke("Deactivate", 0.7f);
+    }
+
+    private void Deactivate()
+    {
+        this.gameObject.SetActive(false);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (dead) return;
+
+        alpha.Complete();
+
         if (collision.CompareTag("Mask"))
         {
             BehindMaskRenderer.enabled = true;
             MaskRenderer.enabled = false;
         }
+
+        // Tween the alpha of a color called myColor to 0 in 1 second
+        alpha = DOTween.ToAlpha(() => BehindMaskRenderer.color, x => BehindMaskRenderer.color = x, 1, 0.5f).OnComplete(() => DOTween.ToAlpha(() => BehindMaskRenderer.color, x => BehindMaskRenderer.color = x, 0, 1));
     }
 
     private void OnDisable()
     {
+        if(smallHits != null) {
+            foreach (var obj in smallHits)
+            {
+                smallHit.ReturnObject(obj);
+            }
+            smallHits.Clear();
+        }
+
+        if (largeHits != null)
+        {
+            foreach (var obj in largeHits)
+            {
+                largeHit.ReturnObject(obj);
+            }
+
+            largeHits.Clear();
+        }
+
         specialEffect.SetActive(false);
         BehindMaskRenderer.enabled = true;
         MaskRenderer.enabled = false;

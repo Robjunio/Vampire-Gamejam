@@ -22,6 +22,10 @@ public class EnemySpawer : MonoBehaviour
 
     [SerializeField] 
     EnemyPool pool;
+    [SerializeField]
+    ObjectPool bigHits;
+    [SerializeField]
+    ObjectPool smallHits;
 
     [SerializeField]
     EnemyInformation[] enemiesInfo;
@@ -57,7 +61,7 @@ public class EnemySpawer : MonoBehaviour
             var script = baseEnemy.GetComponent<Enemy>();
             script.SetLevel(hour);
             script.SetTarget(target);
-            script.SetInfo(enemyToBeSpawned);
+            script.SetInfo(enemyToBeSpawned, bigHits, smallHits);
 
             baseEnemy.transform.position = spawnPos;
             baseEnemy.SetActive(true);

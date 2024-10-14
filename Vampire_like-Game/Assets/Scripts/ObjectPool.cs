@@ -29,7 +29,7 @@ public class ObjectPool : MonoBehaviour
         return obj;
     }
 
-    protected virtual void ReturnObject(GameObject gameObject)
+    public virtual void ReturnObject(GameObject gameObject)
     {
         objectsUsed.Remove(gameObject);
         objectsFree.Add(gameObject);

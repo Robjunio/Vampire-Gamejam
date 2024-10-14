@@ -20,13 +20,13 @@ MonoBehaviour:
   pixelResolutionY: 300
   screenBend: 10
   screenOverscan: 0
-  vignetteSize: 3.44
-  vignetteSmooth: 5.43
+  vignetteSize: 3.84
+  vignetteSmooth: 8.3
   vignetteRound: 2
   blur: 0
   bleed: 0
   smidge: 0
-  scanlinesStrength: 3.25
+  scanlinesStrength: 0.16
   apertureStrength: 0
   shadowlines: -50
   shadowlinesSpeed: -20

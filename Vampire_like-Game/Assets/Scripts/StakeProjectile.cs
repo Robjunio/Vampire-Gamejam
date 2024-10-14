@@ -58,4 +58,13 @@ public class StakeProjectile : MonoBehaviour
     {
         hasHit = true;
     }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Enemy"))
+        {
+            Debug.Log("Enemy was damaged.");
+            HitController();
+        }
+    }
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4786016126313845759}
   - component: {fileID: 8500705552179924954}
   - component: {fileID: 2436871300029651943}
+  - component: {fileID: 6304009539920306775}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -110,6 +111,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 80
+--- !u!114 &6304009539920306775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7696686664696693319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3ed7204af91fc41b556f70a724b6cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stakeAttackCoolDownTimer: 0.5
+  currentStakeAttackTime: 0
+  isStakeAttacking: 0
+  projectileSpeed: 20
+  projectilePrefab: {fileID: 5428230970527514450, guid: 7366b5901a2225448a0e6e1e2c2a3ee2, type: 3}
 --- !u!1 &8664967085503773610
 GameObject:
   m_ObjectHideFlags: 0

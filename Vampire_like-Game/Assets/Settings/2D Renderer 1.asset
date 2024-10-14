@@ -23,7 +23,7 @@ MonoBehaviour:
   vignetteSize: 3.44
   vignetteSmooth: 5.43
   vignetteRound: 2
-  blur: 0
+  blur: 10
   bleed: 0
   smidge: 0
   scanlinesStrength: 3.25
@@ -40,10 +40,10 @@ MonoBehaviour:
   red: 1
   green: 1
   blue: 1
-  chromaticAberration: 1
-  redOffset: {x: 0.1, y: 0.1}
-  blueOffset: {x: 0, y: -0.14}
-  greenOffset: {x: -0.1, y: 0.1}
+  chromaticAberration: 10
+  redOffset: {x: 1, y: 1}
+  blueOffset: {x: 0, y: -1.4}
+  greenOffset: {x: -1, y: 1}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11145981673336645838492a2d98e247, type: 3}
-  m_Name: 2D Renderer
+  m_Name: 2D Renderer 1
   m_EditorClassIdentifier: 
   debugShaders:
     debugReplacementPS: {fileID: 4800000, guid: cf852408f2e174538bcd9b7fda1c5ae7, type: 3}

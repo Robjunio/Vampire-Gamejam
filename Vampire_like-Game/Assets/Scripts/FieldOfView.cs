@@ -20,11 +20,16 @@ public class FieldOfView : MonoBehaviour
     }
     private void Update()
     {
+        if(Time.timeScale < 1) return;
         Vector3 origin = Vector3.zero;
 
         int rayCount = 15;
         float angle = startingAngle;
         float angleIncrease = fov / rayCount;
+
+
+
+        aim.rotation = Quaternion.Euler(0, 0, angle - fov/2);
 
 
         Vector3[] vertices = new Vector3[rayCount + 1 + 1];
@@ -79,8 +84,6 @@ public class FieldOfView : MonoBehaviour
     {
         var angle = GetAngleFromVectorFloat(aimDirection);
         startingAngle = angle + fov / 2f;
-
-        aim.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private float GetAngleFromVectorFloat(Vector3 dir)

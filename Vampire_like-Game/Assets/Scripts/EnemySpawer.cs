@@ -26,6 +26,8 @@ public class EnemySpawer : MonoBehaviour
     ObjectPool bigHits;
     [SerializeField]
     ObjectPool smallHits;
+    [SerializeField]
+    ObjectPool drops;
 
     [SerializeField]
     EnemyInformation[] enemiesInfo;
@@ -40,6 +42,8 @@ public class EnemySpawer : MonoBehaviour
 
     private bool canCreate = true;
 
+    private int currentHour = 0;
+
     private void Awake()
     {
         instance = this;
@@ -49,7 +53,20 @@ public class EnemySpawer : MonoBehaviour
     {
         if (canCreate == false) return;
 
-        for(int i = 0; i < enemyQnt; i++) {
+        for (int i = 0; i < enemyQnt; i++) {
+            if (enemyToBeSpawned == enemiesInfo[0])
+            {
+                enemiesCreated.type1Enemy++;
+            }
+            if (enemyToBeSpawned == enemiesInfo[1])
+            {
+                enemiesCreated.type2Enemy++;
+            }
+            if (enemyToBeSpawned == enemiesInfo[2])
+            {
+                enemiesCreated.type3Enemy++;
+            }
+
             Vector2 spawnPos = GetRandomSpawnPosition();
 
             if (spawnPos == Vector2.zero)
@@ -61,7 +78,7 @@ public class EnemySpawer : MonoBehaviour
             var script = baseEnemy.GetComponent<Enemy>();
             script.SetLevel(hour);
             script.SetTarget(target);
-            script.SetInfo(enemyToBeSpawned, bigHits, smallHits);
+            script.SetInfo(enemyToBeSpawned, bigHits, smallHits, drops);
 
             baseEnemy.transform.position = spawnPos;
             baseEnemy.SetActive(true);
@@ -121,6 +138,8 @@ public class EnemySpawer : MonoBehaviour
 
     private void SetSpawn(int hour)
     {
+        currentHour = hour;
+
         SpawnInfo spawnInfo = enemySpawn.table[hour];
         enemyPool = spawnInfo.enemyPool;
 
@@ -145,6 +164,25 @@ public class EnemySpawer : MonoBehaviour
         }
     }
 
+    private void RespawnCreature(GameObject gameObject, EnemyInformation enemyInfo)
+    {
+        if(enemyInfo == enemiesInfo[0])
+        {
+            enemiesCreated.type1Enemy--;
+            SpawnEnemies(enemiesMark.type1Enemy - enemiesCreated.type1Enemy, enemiesInfo[0], currentHour);
+        }
+        if (enemyInfo == enemiesInfo[1])
+        {
+            enemiesCreated.type2Enemy--;
+            SpawnEnemies(enemiesMark.type2Enemy - enemiesCreated.type2Enemy, enemiesInfo[1], currentHour);
+        }
+        if (enemyInfo == enemiesInfo[2])
+        {
+            enemiesCreated.type3Enemy--;
+            SpawnEnemies(enemiesMark.type3Enemy - enemiesCreated.type3Enemy, enemiesInfo[2], currentHour);
+        }
+    }
+
     private void DisableSpawn(int hour)
     {
         canCreate = false;
@@ -154,11 +192,13 @@ public class EnemySpawer : MonoBehaviour
     {
         GameManager.HourPassed += SetSpawn;
         GameManager.LastHour += DisableSpawn;
+        Enemy.Died += RespawnCreature;
     }
 
     private void OnDisable()
     {
         GameManager.HourPassed -= SetSpawn;
         GameManager.LastHour -= DisableSpawn;
+        Enemy.Died -= RespawnCreature;
     }
 }

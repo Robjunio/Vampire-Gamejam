@@ -5,7 +5,7 @@ public class EnemyPool : ObjectPool
 {
     private void ReturnEnemy(GameObject gameObject, EnemyInformation info)
     {
-        if (gameObject == null)
+        if (gameObject != null)
         {
             ReturnObject(gameObject);
         }
@@ -18,6 +18,6 @@ public class EnemyPool : ObjectPool
 
     private void OnDisable()
     {
-        
+        Enemy.Died -= ReturnEnemy;
     }
 }

@@ -1,4 +1,4 @@
-using System;
+ using System;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -77,6 +77,16 @@ public class UIManager : MonoBehaviour
                 panelRef.panelObj.SetActive(false);
             }
         }
+    }
+
+    public void DeactivatePausePanel()
+    {
+        additionalCameraData.SetRenderer(1);
+        Time.timeScale = 1;
+
+        basePanel.SetActive(false);
+
+        panelsRef[0].panelObj.SetActive(false);
     }
 
 }

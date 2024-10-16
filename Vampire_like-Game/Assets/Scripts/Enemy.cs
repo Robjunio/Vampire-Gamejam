@@ -22,8 +22,10 @@ public class Enemy : MonoBehaviour
     private ObjectPool smallHit;
     private List<GameObject> smallHits;
     private ObjectPool largeHit;
-
     private List<GameObject> largeHits;
+
+    private ObjectPool drops;
+    private GameObject drop;
 
     float damage;
     float life;
@@ -73,12 +75,13 @@ public class Enemy : MonoBehaviour
         this.level = level;
     }
 
-    public void SetInfo(EnemyInformation info, ObjectPool big, ObjectPool small)
+    public void SetInfo(EnemyInformation info, ObjectPool big, ObjectPool small, ObjectPool drops)
     {
         dead = false;
 
         largeHit = big;
         smallHit = small;
+        this.drops = drops;
 
         if (info != null)
         {
@@ -113,11 +116,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (dead) return;
-        if (collision.CompareTag("Mask"))
-        {
-            BehindMaskRenderer.enabled = false;
-            MaskRenderer.enabled = true;
-        }
+        
         if (collision.CompareTag("Weapon"))
         {
             GetHit(collision);
@@ -146,6 +145,10 @@ public class Enemy : MonoBehaviour
 
     private void Dead()
     {
+        drop = drops.GetFreeObject();
+        drop.transform.position = transform.position;
+        drop.SetActive(true);
+
         dead = true;
         BehindMaskRenderer.enabled = false;
         MaskRenderer.enabled = false;
@@ -162,6 +165,15 @@ public class Enemy : MonoBehaviour
         OnDie();
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (dead) return;
+        if (collision.CompareTag("Mask"))
+        {
+            BehindMaskRenderer.enabled = false;
+            MaskRenderer.enabled = true;
+        }
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (dead) return;

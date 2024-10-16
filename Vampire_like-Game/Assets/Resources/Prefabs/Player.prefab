@@ -110,7 +110,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352610899768172225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -164,7 +164,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8821406912911405141}
   - component: {fileID: 7596878370611537234}
-  m_Layer: 8
+  - component: {fileID: 2764681093628693535}
+  m_Layer: 2
   m_Name: Circle around
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,8 +225,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 0.8
-  m_PointLightOuterRadius: 2
+  m_PointLightInnerRadius: 1.5
+  m_PointLightOuterRadius: 2.5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -236,6 +237,41 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!58 &2764681093628693535
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7390151741904056471}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.5
 --- !u!1 &7696686664696693319
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +286,7 @@ GameObject:
   - component: {fileID: 2436871300029651943}
   - component: {fileID: 6304009539920306775}
   - component: {fileID: 2428277158608104133}
+  - component: {fileID: 5617828982659833995}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -381,6 +418,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FOV: {fileID: 4777825730657524278}
+--- !u!114 &5617828982659833995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7696686664696693319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1f4cf9d3df705e418bc4436044324b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8060918654408103072
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,9 +559,17 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.16341066, y: 0.39304602}
-      - {x: -0.29741377, y: -0.017804414}
-      - {x: 0.20592391, y: -0.43550694}
+    - - {x: 1.805685, y: 0.5661839}
+      - {x: 1.2716811, y: 1.5633333}
+      - {x: -0.14632328, y: 2.0247655}
+      - {x: -1.22736, y: 1.5562863}
+      - {x: -1.8870559, y: 0.6477967}
+      - {x: -1.9057934, y: 0.07471313}
+      - {x: -1.9277308, y: -0.58820546}
+      - {x: -1.2164729, y: -1.5765586}
+      - {x: -0.0035604835, y: -2.0092041}
+      - {x: 1.2829345, y: -1.5374315}
+      - {x: 1.8466119, y: -0.6309755}
       - {x: 7.1008687, y: -2.513157}
       - {x: 7.5059075, y: -0.26391995}
       - {x: 7.2073517, y: 2.4100118}

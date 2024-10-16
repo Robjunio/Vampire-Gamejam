@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     private ObjectPool drops;
     private GameObject drop;
 
-    float damage;
+    public float damage;
     float life;
     float speed;
 

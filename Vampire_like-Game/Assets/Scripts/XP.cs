@@ -18,10 +18,12 @@ public class XP : MonoBehaviour
             // Collect XP
             gameObject.SetActive(false);
         });
+        transform.DOScale(Vector3.zero, 0.4f);
     }
 
     private void OnDisable()
     {
+        transform.localScale = Vector3.one;
         collected = false;
         Collected?.Invoke(gameObject);
     }

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance; 
+
     public enum Panels
     {
         Pause,
@@ -19,8 +21,16 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] GameObject basePanel;
     [SerializeField] PanelRef[] panelsRef;
+
+    [SerializeField] Animator hit;
+
     UnityEngine.Rendering.Universal.UniversalAdditionalCameraData additionalCameraData;
     private bool gamePaused;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -89,4 +99,8 @@ public class UIManager : MonoBehaviour
         panelsRef[0].panelObj.SetActive(false);
     }
 
+    public void PlayerGotHit()
+    {
+        hit.SetTrigger("HIT");
+    }
 }

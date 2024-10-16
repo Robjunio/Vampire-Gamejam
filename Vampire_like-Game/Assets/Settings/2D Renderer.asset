@@ -18,7 +18,7 @@ MonoBehaviour:
   preset: 6
   pixelResolutionX: 480
   pixelResolutionY: 300
-  screenBend: 10
+  screenBend: 0
   screenOverscan: 0
   vignetteSize: 3.84
   vignetteSmooth: 8.3

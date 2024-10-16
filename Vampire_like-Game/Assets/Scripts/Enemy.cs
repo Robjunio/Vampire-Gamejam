@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     private Transform target;
+    private CircleCollider2D circleCollider;
 
     private ObjectPool smallHit;
     private List<GameObject> smallHits;
@@ -44,6 +45,7 @@ public class Enemy : MonoBehaviour
     {
         TryGetComponent(out animator);
         TryGetComponent(out rb);
+        TryGetComponent(out circleCollider);
 
         smallHits = new List<GameObject>();
         largeHits = new List<GameObject>();
@@ -147,6 +149,7 @@ public class Enemy : MonoBehaviour
         dead = true;
         BehindMaskRenderer.enabled = false;
         MaskRenderer.enabled = false;
+        circleCollider.enabled = false;
 
         alpha.Complete();
 
@@ -156,6 +159,7 @@ public class Enemy : MonoBehaviour
     private void Deactivate()
     {
         this.gameObject.SetActive(false);
+        OnDie();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -197,5 +201,6 @@ public class Enemy : MonoBehaviour
         specialEffect.SetActive(false);
         BehindMaskRenderer.enabled = true;
         MaskRenderer.enabled = false;
+        circleCollider.enabled = true;
     }
 }

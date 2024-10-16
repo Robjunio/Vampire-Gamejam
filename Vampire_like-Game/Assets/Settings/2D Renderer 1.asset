@@ -40,10 +40,10 @@ MonoBehaviour:
   red: 1
   green: 1
   blue: 1
-  chromaticAberration: 10
-  redOffset: {x: 1, y: 1}
-  blueOffset: {x: 0, y: -1.4}
-  greenOffset: {x: -1, y: 1}
+  chromaticAberration: 3
+  redOffset: {x: 0.3, y: 0.3}
+  blueOffset: {x: 0, y: -0.42}
+  greenOffset: {x: -0.3, y: 0.3}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

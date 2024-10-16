@@ -37,9 +37,9 @@ public class UIManager : MonoBehaviour
 
     private void CheckPausePanel()
     {
-        if(basePanel.activeSelf)
+        if (panelsRef[0].panelObj.activeSelf)
         {
-            DeactivatePanel();
+            DeactivatePanel(Panels.Pause);
         }
         else
         {
@@ -63,9 +63,20 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void DeactivatePanel()
+    public void DeactivatePanel(Panels panel)
     {
+        additionalCameraData.SetRenderer(1);
+        Time.timeScale = 1;
 
+        basePanel.SetActive(false);
+
+        foreach (PanelRef panelRef in panelsRef)
+        {
+            if (panelRef.panel == panel)
+            {
+                panelRef.panelObj.SetActive(false);
+            }
+        }
     }
 
 }

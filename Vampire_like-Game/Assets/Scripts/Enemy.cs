@@ -201,6 +201,9 @@ public class Enemy : MonoBehaviour
         specialEffect.SetActive(false);
         BehindMaskRenderer.enabled = true;
         MaskRenderer.enabled = false;
-        circleCollider.enabled = true;
+        if(circleCollider != null)
+        {
+            circleCollider.enabled = true;
+        }
     }
 }

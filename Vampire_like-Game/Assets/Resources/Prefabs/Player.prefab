@@ -345,9 +345,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.5
 --- !u!50 &8500705552179924954
 Rigidbody2D:
   serializedVersion: 4
@@ -403,8 +403,17 @@ MonoBehaviour:
   stakeAttackCoolDownTimer: 0.5
   currentStakeAttackTime: 0
   isStakeAttacking: 0
-  projectileSpeed: 2
+  projectileSpeed: 200
   projectilePrefab: {fileID: 5428230970527514450, guid: 7366b5901a2225448a0e6e1e2c2a3ee2, type: 3}
+  garlicCoolDownTimer: 15
+  currentGarlicAttackTime: 0
+  isGarlicInUse: 0
+  garlicProjectilePrefab: {fileID: 3981317092314648800, guid: ece0f46fb1cbf934396364c9843410ef, type: 3}
+  holyWaterCoolDownTimer: 25
+  currentHolyWaterAttackTime: 0
+  isHolyWaterInUse: 0
+  holyWaterProjectileSpeed: 100
+  holyWaterProjectilePrefab: {fileID: 4649962469263509419, guid: d839e41ee49f3d94cbbebf4e6ab2a1be, type: 3}
 --- !u!114 &2428277158608104133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,6 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f4cf9d3df705e418bc4436044324b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 100
 --- !u!1 &8060918654408103072
 GameObject:
   m_ObjectHideFlags: 0

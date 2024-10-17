@@ -210,9 +210,14 @@ public class Enemy : MonoBehaviour
             largeHits.Clear();
         }
 
-        specialEffect.SetActive(false);
+        if(specialEffect != null)
+        {
+            specialEffect.SetActive(false);
+        }
+
         BehindMaskRenderer.enabled = true;
         MaskRenderer.enabled = false;
+
         if(circleCollider != null)
         {
             circleCollider.enabled = true;

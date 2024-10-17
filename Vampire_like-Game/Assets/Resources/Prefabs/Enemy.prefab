@@ -5020,7 +5020,6 @@ MonoBehaviour:
   specialEffect: {fileID: 1153342570817192417}
   BehindMaskRenderer: {fileID: 2162515098175310135}
   MaskRenderer: {fileID: 5157634820878357814}
-  damage: 0
 --- !u!95 &4521234124005560063
 Animator:
   serializedVersion: 5
@@ -5116,6 +5115,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8deb960a7be1f0248b9eda78b7c9bc06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freezeTimer: 5
-  currentFreezeTime: 0
-  isFrozen: 0

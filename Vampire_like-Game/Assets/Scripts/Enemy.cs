@@ -226,6 +226,6 @@ public class Enemy : MonoBehaviour
 
     private void OnDestroy()
     {
-        alpha.Complete();
+        DOTween.CompleteAll();
     }
 }

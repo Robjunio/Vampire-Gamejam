@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
         LevelUp
     }
 
+    [SerializeField] GameObject pauseTutorial;
+
     [Serializable]
     public class PanelRef
     {
@@ -102,6 +104,16 @@ public class UIManager : MonoBehaviour
                 panelRef.panelObj.SetActive(false);
             }
         }
+    }
+
+    public void ActivateText(bool value)
+    {
+        if(pauseTutorial.activeSelf == value)
+        {
+            return;
+        }
+
+        else pauseTutorial.SetActive(value);
     }
 
     public void DeactivatePausePanel()

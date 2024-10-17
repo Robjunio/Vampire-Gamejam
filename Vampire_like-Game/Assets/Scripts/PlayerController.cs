@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             invunerable = true;
-            Tweener tweener = Camera.main.transform.DOShakePosition(0.5f).OnComplete(() => { invunerable = false; });
+            Tweener tweener = Camera.main.transform.DOShakePosition(0.5f, 0.5f, 10).OnComplete(() => { invunerable = false; });
             UIManager.Instance.PlayerGotHit();
             UIManager.Instance.SetPlayerCauntion(currentHealth <= MaxHealth * 0.4f);
         }

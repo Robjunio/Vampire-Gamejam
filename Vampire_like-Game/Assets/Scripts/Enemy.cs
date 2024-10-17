@@ -125,7 +125,7 @@ public class Enemy : MonoBehaviour
 
     private void GetHit(Collider2D collision)
     {
-        life -= 10;
+        life -= 20;
         if (life > 0)
         {
             var obj = smallHit.GetFreeObject();
@@ -217,5 +217,10 @@ public class Enemy : MonoBehaviour
         {
             circleCollider.enabled = true;
         }
+    }
+
+    private void OnDestroy()
+    {
+        alpha.Complete();
     }
 }

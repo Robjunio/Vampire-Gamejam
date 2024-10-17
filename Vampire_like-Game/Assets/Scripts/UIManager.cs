@@ -1,5 +1,9 @@
  using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,7 +13,8 @@ public class UIManager : MonoBehaviour
     {
         Pause,
         Victory,
-        Defeat
+        Defeat,
+        LevelUp
     }
 
     [Serializable]
@@ -23,6 +28,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] PanelRef[] panelsRef;
 
     [SerializeField] Animator hit;
+    [SerializeField] GameObject CautionWarning;
+
+    [SerializeField] Slider life;
+    [SerializeField] TMP_Text currentLife;
 
     UnityEngine.Rendering.Universal.UniversalAdditionalCameraData additionalCameraData;
     private bool gamePaused;
@@ -39,7 +48,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape) && !gamePaused)
         {
             CheckPausePanel();
         }
@@ -73,6 +82,12 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void ActivateDefeatPanel()
+    {
+        gamePaused = true;
+        ActivatePanel(Panels.Defeat);
+    }
+
     public void DeactivatePanel(Panels panel)
     {
         additionalCameraData.SetRenderer(1);
@@ -103,4 +118,34 @@ public class UIManager : MonoBehaviour
     {
         hit.SetTrigger("HIT");
     }
+
+    public void SetPlayerCauntion(bool value)
+    {
+        CautionWarning.SetActive(value);
+    }
+
+    public void UpdateLife(float MaxLife, float CurrentLife)
+    {
+        int max = (int)MaxLife;
+        int min = (int)CurrentLife;
+
+        currentLife.text = min.ToString() + "/" +  max.ToString();
+
+        life.maxValue = max;
+        life.minValue = 0;
+        life.value = min;
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Game");
+    }
+
+    public void GoToMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Menu");
+    }
+
 }

@@ -31,7 +31,10 @@ public class PlayerController : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, MaxHealth);
 
+        UIManager.Instance.UpdateLife(MaxHealth, currentHealth);
+
         if(currentHealth == 0) {
+            UIManager.Instance.ActivateDefeatPanel();
             // Die
         }
         else
@@ -39,6 +42,7 @@ public class PlayerController : MonoBehaviour
             invunerable = true;
             Tweener tweener = Camera.main.transform.DOShakePosition(0.5f).OnComplete(() => { invunerable = false; });
             UIManager.Instance.PlayerGotHit();
+            UIManager.Instance.SetPlayerCauntion(currentHealth <= MaxHealth * 0.4f);
         }
     }
 

@@ -18,7 +18,7 @@ public class EnemyFreeze : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Mask") && Input.GetKey(KeyCode.R))
+        if (collision.CompareTag("Mask") && Input.GetKey(KeyCode.Mouse1))
         {
             this.gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
         }

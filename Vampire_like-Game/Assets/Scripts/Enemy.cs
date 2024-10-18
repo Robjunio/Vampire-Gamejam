@@ -223,9 +223,4 @@ public class Enemy : MonoBehaviour
             circleCollider.enabled = true;
         }
     }
-
-    private void OnDestroy()
-    {
-        DOTween.CompleteAll();
-    }
 }

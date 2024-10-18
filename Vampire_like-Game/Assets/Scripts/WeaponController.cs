@@ -43,7 +43,7 @@ public class WeaponController : MonoBehaviour
     {
         if (!isStakeAttacking)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 isStakeAttacking = true;
                 StakeAttack();
@@ -73,7 +73,7 @@ public class WeaponController : MonoBehaviour
         var rotation = Quaternion.Euler(0, 0, lookAngle);
 
         var projectile = Instantiate(projectilePrefab, position, rotation);
-        projectile.Fire(projectileSpeed, dir);
+        projectile.Fire(projectileSpeed, dir.normalized);
     }
 
     private void GarlicAttackController()

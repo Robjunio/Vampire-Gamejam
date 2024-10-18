@@ -1,8 +1,8 @@
- using System;
+using DG.Tweening;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -34,6 +34,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] Slider life;
     [SerializeField] TMP_Text currentLife;
+
+    [SerializeField] Slider Xp;
+    [SerializeField] TMP_Text level;
 
     UnityEngine.Rendering.Universal.UniversalAdditionalCameraData additionalCameraData;
     private bool gamePaused;
@@ -90,6 +93,13 @@ public class UIManager : MonoBehaviour
         ActivatePanel(Panels.Defeat);
     }
 
+
+    public void ActivateLevelUpPanel()
+    {
+        gamePaused = true;
+        ActivatePanel(Panels.Defeat);
+    }
+
     public void DeactivatePanel(Panels panel)
     {
         additionalCameraData.SetRenderer(1);
@@ -104,6 +114,7 @@ public class UIManager : MonoBehaviour
                 panelRef.panelObj.SetActive(false);
             }
         }
+        gamePaused = false;
     }
 
     public void ActivateText(bool value)
@@ -148,14 +159,25 @@ public class UIManager : MonoBehaviour
         life.value = min;
     }
 
+    public void UpdateXP(int MaxXp, int CurrentXp, int level)
+    { 
+        this.level.text = "Lvl " + level;
+
+        Xp.maxValue = MaxXp;
+        Xp.minValue = 0;
+        Xp.value = CurrentXp;
+    }
+
     public void Restart()
     {
+        DOTween.Clear();
         Time.timeScale = 1;
         SceneManager.LoadScene("Game");
     }
 
     public void GoToMenu()
     {
+        DOTween.Clear();
         Time.timeScale = 1;
         SceneManager.LoadScene("Menu");
     }

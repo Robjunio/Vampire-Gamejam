@@ -182,4 +182,19 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void ActivateVictory(int hour)
+    {
+        ActivatePanel(Panels.Victory);
+    }
+
+    private void OnEnable()
+    {
+        GameManager.LastHour += ActivateVictory;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.LastHour -= ActivateVictory;
+    }
+
 }

@@ -28,11 +28,11 @@ public class GameManager : MonoBehaviour
 
     private void OnHourPassed(int currentHour)
     {
-        if (currentHour == 9)
+        if (currentHour >= 9)
         {
             LastHour?.Invoke(currentHour);
         }
-        HourPassed?.Invoke(currentHour);
+        else HourPassed?.Invoke(currentHour);
     }
 
     private void Update()

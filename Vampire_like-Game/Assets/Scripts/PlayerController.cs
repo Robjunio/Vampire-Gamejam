@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
         xp += 5;
         currentHealth += 2;
 
+        currentHealth = Mathf.Clamp(currentHealth, 0, MaxHealth);
         UIManager.Instance.UpdateLife(MaxHealth, currentHealth);
 
         CalculateXP();

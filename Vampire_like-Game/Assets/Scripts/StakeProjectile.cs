@@ -46,7 +46,7 @@ public class StakeProjectile : MonoBehaviour
 
     public void Fire(float speed, Vector3 direction)
     {
-        rb.velocity = direction * speed * Time.deltaTime * 4;
+        rb.velocity = direction * speed * Time.deltaTime * 2;
     }
 
     private void AutoDestroy()

@@ -463,6 +463,15 @@ MonoBehaviour:
   isHolyWaterInUse: 0
   holyWaterProjectileSpeed: 100
   holyWaterProjectilePrefab: {fileID: 4649962469263509419, guid: d839e41ee49f3d94cbbebf4e6ab2a1be, type: 3}
+  canUseGarlic: 0
+  canUseHolyWater: 0
+  stakeLevel: 0
+  garlicLevel: 0
+  holyWaterLevel: 0
+  maxLevel: 0
+  stakeInfo: {fileID: 11400000, guid: a437f53a038215649af470633fa4cc27, type: 2}
+  garlicInfo: {fileID: 11400000, guid: 43e1f9cf441bf2047b3fc2d2eec3e323, type: 2}
+  holyWaterInfo: {fileID: 11400000, guid: 452793282f92bc742bf905d43532a6bf, type: 2}
 --- !u!114 &2428277158608104133
 MonoBehaviour:
   m_ObjectHideFlags: 0

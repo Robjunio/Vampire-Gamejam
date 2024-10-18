@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -10,8 +11,16 @@ public class StakeProjectile : MonoBehaviour
     [SerializeField] private float stakeAutoDestroyTimer;
     [SerializeField] private float currentStakeTime;
     [SerializeField] private bool hasHit;
-    [SerializeField] private int MaxNumHit;
     private int currentNumHit;
+
+    // --- --- ---
+    private StakeInformation Info;
+    private int level;
+
+    public int maxNumHit;
+    public float damage;
+    public float speedMultiplier;
+    // --- --- ---
 
     private void Awake()
     {
@@ -40,13 +49,21 @@ public class StakeProjectile : MonoBehaviour
         // TO DO
         if (hasHit)
         {
-            AutoDestroy();
+            currentNumHit++;
+            if (currentNumHit < maxNumHit)
+            {
+                hasHit = false;
+            }
+            else
+            {
+                AutoDestroy();
+            }
         }
     }
 
     public void Fire(float speed, Vector3 direction)
     {
-        rb.velocity = direction * speed * Time.deltaTime * 4f;
+        rb.velocity = direction * speed * Time.deltaTime * 4f * speedMultiplier;
     }
 
     private void AutoDestroy()
@@ -63,8 +80,30 @@ public class StakeProjectile : MonoBehaviour
     {
         if (collider.CompareTag("Enemy"))
         {
-            Debug.Log("Enemy was damaged.");
             HitController();
         }
+    }
+
+    // --- --- ---
+
+    public void SetLevel(int level)
+    {
+        this.level = level;
+    }
+
+    public void SetInfo(StakeInformation info)
+    {
+        if (info != null)
+        {
+            Info = info;
+            SetStats();
+        }
+    }
+
+    private void SetStats()
+    {
+        maxNumHit = Info.StatsByLevel[level].MaxNumHit;
+        damage = Info.StatsByLevel[level].Damage;
+        speedMultiplier = Info.StatsByLevel[level].Speed;
     }
 }

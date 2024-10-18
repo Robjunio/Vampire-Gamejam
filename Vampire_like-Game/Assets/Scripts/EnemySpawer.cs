@@ -138,6 +138,8 @@ public class EnemySpawer : MonoBehaviour
 
     private void SetSpawn(int hour)
     {
+        //AudioManager.Instance.PlaySound(AudioManager.Sound.Bats, transform.position);
+
         currentHour = hour;
 
         SpawnInfo spawnInfo = enemySpawn.table[hour];

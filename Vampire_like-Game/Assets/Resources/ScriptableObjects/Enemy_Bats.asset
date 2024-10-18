@@ -53,3 +53,4 @@ MonoBehaviour:
     Health: 200
     Damage: 100
     Speed: 1.1
+  Animator: {fileID: 9100000, guid: f3933341c8342184c900883d2fb0632f, type: 2}

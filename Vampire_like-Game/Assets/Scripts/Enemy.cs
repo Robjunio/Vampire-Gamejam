@@ -45,7 +45,6 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        TryGetComponent(out animator);
         TryGetComponent(out rb);
         TryGetComponent(out circleCollider);
 
@@ -104,9 +103,13 @@ public class Enemy : MonoBehaviour
         life = Info.StatsByHour[level].Health * powerMultiplier;
         speed = Info.StatsByHour[level].Speed * powerMultiplier;
 
-        if(Info.Animator != null)
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+
+        if(Info.Animator != null && animator != null)
         {
-            animator = Info.Animator;
+            
+            animator.runtimeAnimatorController = Info.Animator as RuntimeAnimatorController;
         }
 
         // Tween the alpha of a color called myColor to 0 in 1 second
@@ -140,11 +143,19 @@ public class Enemy : MonoBehaviour
             obj.transform.position = collision.gameObject.transform.position;
             obj.SetActive(true);
             largeHits.Add(obj);
+
+            AudioManager.Instance.PlaySound(AudioManager.Sound.EnemyHitEffect, collision.gameObject.transform.position);
+
+            var dir = collision.gameObject.transform.position - transform.position;
+
+            rb.AddForce(dir.normalized * 200, ForceMode2D.Impulse);
         }
     }
 
     private void Dead()
     {
+        AudioManager.Instance.PlaySound(AudioManager.Sound.DyingEnemy, transform.position);
+
         drop = drops.GetFreeObject();
         drop.transform.position = transform.position;
         drop.SetActive(true);

@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, MaxHealth);
         UIManager.Instance.UpdateLife(MaxHealth, currentHealth);
 
+        AudioManager.Instance.PlaySound(AudioManager.Sound.Potion, transform.position);
+
         CalculateXP();
     }
 
@@ -71,6 +73,7 @@ public class PlayerController : MonoBehaviour
             currentHealth += 20;
 
             currentHealth = Mathf.Clamp(currentHealth, 0, MaxHealth);
+            UIManager.Instance.SetPlayerCauntion(currentHealth <= MaxHealth * 0.2f);
 
             UIManager.Instance.UpdateLife(MaxHealth, currentHealth);
             // Level UP!
@@ -92,14 +95,15 @@ public class PlayerController : MonoBehaviour
 
         if(currentHealth == 0) {
             UIManager.Instance.ActivateDefeatPanel();
-            // Die
+            AudioManager.Instance.PlaySound(AudioManager.Sound.HeroDying, transform.position);
         }
         else
         {
             invunerable = true;
             Tweener tweener = Camera.main.transform.DOShakePosition(0.5f, 0.5f, 10).OnComplete(() => { invunerable = false; });
             UIManager.Instance.PlayerGotHit();
-            UIManager.Instance.SetPlayerCauntion(currentHealth <= MaxHealth * 0.4f);
+            UIManager.Instance.SetPlayerCauntion(currentHealth <= MaxHealth * 0.2f);
+            AudioManager.Instance.PlaySound(AudioManager.Sound.PlayerHitEffect, transform.position);
         }
     }
 

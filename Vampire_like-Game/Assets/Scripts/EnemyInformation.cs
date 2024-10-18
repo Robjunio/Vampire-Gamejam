@@ -14,5 +14,5 @@ public class Stats
 public class EnemyInformation : ScriptableObject
 {
     public Stats[] StatsByHour;
-    public Animator Animator;
+    public RuntimeAnimatorController Animator;
 }

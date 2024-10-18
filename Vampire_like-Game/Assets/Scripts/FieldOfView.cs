@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
+    [SerializeField] private AudioSource audioSource;
+
     [SerializeField] private LayerMask m_LayerMask;
     private Mesh mesh;
     private Vector3 origin;
@@ -12,6 +14,7 @@ public class FieldOfView : MonoBehaviour
 
     [SerializeField] private Transform aim;
 
+    private bool alreadyPlayed;
     void Start()
     {
         mesh = new Mesh();
@@ -21,6 +24,27 @@ public class FieldOfView : MonoBehaviour
     private void Update()
     {
         if(Time.timeScale < 1) return;
+
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            if (alreadyPlayed)
+            {
+                return;
+            }
+            else
+            {
+
+                alreadyPlayed = true;
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            alreadyPlayed = false;
+            audioSource.Stop();
+        }
+
+
         Vector3 origin = Vector3.zero;
 
         int rayCount = 15;

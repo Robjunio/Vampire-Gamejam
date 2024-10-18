@@ -128,7 +128,24 @@ public class Enemy : MonoBehaviour
 
     private void GetHit(Collider2D collision)
     {
-        life -= 20;
+        float damage = 0;
+        if(collision.transform.GetComponent<StakeProjectile>()  != null)
+        {
+            damage = collision.transform.GetComponent<StakeProjectile>().damage;
+        }
+        else if (collision.transform.GetComponent<HolyWaterProjectile>() != null)
+        {
+            damage = collision.transform.GetComponent<HolyWaterProjectile>().damage;
+        }
+        else if (collision.transform.GetComponent<ExplodeAction>() != null)
+        {
+            damage = 100;
+        }
+
+        life -= damage;
+
+        Debug.Log("Enemy received " + damage + " of damage.");
+
         if (life > 0)
         {
             var obj = smallHit.GetFreeObject();
@@ -151,6 +168,46 @@ public class Enemy : MonoBehaviour
             rb.AddForce(dir.normalized * 200, ForceMode2D.Impulse);
         }
     }
+
+    // --- --- ---
+
+    private void GetConstantDamage(Collider2D collision)
+    {
+        float damage = 1;
+
+        if (collision.transform.GetComponent<GarlicProjectile>() != null)
+        {
+            damage = collision.transform.GetComponent<GarlicProjectile>().damage * Time.deltaTime * 10;
+        }
+
+        life -= damage;
+
+        Debug.Log("Enemy is being damaged by garlic." + damage);
+
+        if (life > 0)
+        {
+            var obj = smallHit.GetFreeObject();
+            obj.transform.position = collision.gameObject.transform.position;
+            obj.SetActive(true);
+            smallHits.Add(obj);
+        }
+        else
+        {
+            Dead();
+            var obj = largeHit.GetFreeObject();
+            obj.transform.position = collision.gameObject.transform.position;
+            obj.SetActive(true);
+            largeHits.Add(obj);
+
+            AudioManager.Instance.PlaySound(AudioManager.Sound.EnemyHitEffect, collision.gameObject.transform.position);
+
+            var dir = collision.gameObject.transform.position - transform.position;
+
+            rb.AddForce(dir.normalized * 200, ForceMode2D.Impulse);
+        }
+    }
+
+    // --- --- ---
 
     private void Dead()
     {
@@ -183,6 +240,11 @@ public class Enemy : MonoBehaviour
         {
             BehindMaskRenderer.enabled = false;
             MaskRenderer.enabled = true;
+        }
+
+        if (collision.CompareTag("Weapon"))
+        {
+            GetConstantDamage(collision);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

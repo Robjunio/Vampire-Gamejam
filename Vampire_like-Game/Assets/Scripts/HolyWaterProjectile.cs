@@ -11,6 +11,14 @@ public class HolyWaterProjectile : MonoBehaviour
 
     private GameObject explodeArea;
 
+    // --- --- ---
+    private HolyWaterInformation Info;
+    private int level;
+
+    public float damage;
+    public float radius;
+    // --- --- ---
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -58,5 +66,33 @@ public class HolyWaterProjectile : MonoBehaviour
     private void Explode()
     {
         explodeArea.SetActive(true);
+    }
+
+    // --- --- ---
+
+    public void SetLevel(int level)
+    {
+        this.level = level;
+    }
+
+    public void SetInfo(HolyWaterInformation info)
+    {
+        if (info != null)
+        {
+            Info = info;
+            SetStats();
+        }
+    }
+
+    private void SetStats()
+    {
+        damage = Info.StatsByLevel[level].Damage;
+        radius = Info.StatsByLevel[level].Radius;
+        SetRadius();
+    }
+
+    private void SetRadius()
+    {
+        explodeArea.transform.localScale = new Vector3(radius * 2, radius * 2, 1);
     }
 }

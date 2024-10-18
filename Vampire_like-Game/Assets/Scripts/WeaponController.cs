@@ -24,19 +24,65 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private float holyWaterProjectileSpeed;
     [SerializeField] private HolyWaterProjectile holyWaterProjectilePrefab;
 
+    public bool canUseGarlic;
+    public bool canUseHolyWater;
+
+    public int stakeLevel;
+    public int garlicLevel;
+    public int holyWaterLevel;
+
+    public int maxLevel;
+
+    [SerializeField] private StakeInformation stakeInfo;
+    [SerializeField] private GarlicInformation garlicInfo;
+    [SerializeField] private HolyWaterInformation holyWaterInfo;
+
     void Start()
     {
         isStakeAttacking = false;
         isGarlicInUse = false;
         currentHolyWaterAttackTime = holyWaterCoolDownTimer;
         isHolyWaterInUse = true;
+
+        canUseGarlic = false;
+        canUseHolyWater = false;
+
+        stakeLevel = 0;
+        garlicLevel = 0;
+        holyWaterLevel = 0;
+        maxLevel = 2;
     }
 
-    void Update()
+void Update()
     {
+        // These commented lines are for testing purposes only.
+        /*
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            UpgradeStake();
+            if (!canUseGarlic || !canUseHolyWater)
+            {
+                EquipGarlic();
+                EquipHolyWater();
+            }
+            else
+            {
+                UpgradeGarlic();
+                UpgradeHolyWater();
+            }
+        }
+        */
+
         StakeAttackController();
-        GarlicAttackController();
-        HolyWaterAttackController();
+
+        if (canUseGarlic)
+        {
+            GarlicAttackController();
+        }
+        if (canUseHolyWater)
+        {
+            HolyWaterAttackController();
+        }
     }
 
     private void StakeAttackController()
@@ -73,6 +119,8 @@ public class WeaponController : MonoBehaviour
         var rotation = Quaternion.Euler(0, 0, lookAngle);
 
         var projectile = Instantiate(projectilePrefab, position, rotation);
+        projectile.SetLevel(stakeLevel);
+        projectile.SetInfo(stakeInfo);
         projectile.Fire(projectileSpeed, dir.normalized);
     }
 
@@ -105,6 +153,8 @@ public class WeaponController : MonoBehaviour
         var position = transform.position + transform.forward;
 
         var projectile = Instantiate(garlicProjectilePrefab, position, transform.rotation);
+        projectile.SetLevel(garlicLevel);
+        projectile.SetInfo(garlicInfo);
     }
 
     private void HolyWaterAttackController()
@@ -135,6 +185,45 @@ public class WeaponController : MonoBehaviour
         var position = transform.position + transform.forward;
 
         var projectile = Instantiate(holyWaterProjectilePrefab, position, transform.rotation);
+        projectile.SetLevel(holyWaterLevel);
+        projectile.SetInfo(holyWaterInfo);
         projectile.Fire(holyWaterProjectileSpeed, dir);
+    }
+
+    public int UpgradeWeaponLevel(int level)
+    {
+        if (level < maxLevel)
+        {
+            return level + 1;
+        }
+        else
+        {
+            return level;
+        }
+    }
+
+    public void UpgradeStake()
+    {
+        stakeLevel = UpgradeWeaponLevel(stakeLevel);
+        Debug.Log("The stakes leveled up.");
+    }
+    public void UpgradeGarlic()
+    {
+        garlicLevel = UpgradeWeaponLevel(garlicLevel);
+        Debug.Log("The garlic leveled up.");
+    }
+    public void UpgradeHolyWater()
+    {
+        holyWaterLevel = UpgradeWeaponLevel(holyWaterLevel);
+    }
+
+    public void EquipGarlic()
+    {
+        canUseGarlic = true;
+    }
+
+    public void EquipHolyWater()
+    {
+        canUseHolyWater = true;
     }
 }

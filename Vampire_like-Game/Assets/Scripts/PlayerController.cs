@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
     private float xp;
     private bool invunerable;
 
-    float divisorXP = 5.0f;  // Pode ajustar o divisor de XP
-    float multiplicador = 1.5f;  // Ajusta a curva de progressão
+    float divisorXP = 8.0f;  // Pode ajustar o divisor de XP
+    float multiplicador = 1f;  // Ajusta a curva de progressão
     int nivelBase = 1;  // Nível base inicial
 
     public int CalcularNivel(int xp)
@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     public int HowManyToNextLevel(int level)
     {
         // Fórmula para calcular o nível baseado em XP level - nivelbase
-        int xp = Mathf.FloorToInt(((Mathf.Pow(level, 2) - Mathf.Pow(1, 2))/Mathf.Pow(multiplicador,2)) * divisorXP);
+        int xp = Mathf.FloorToInt(((Mathf.Pow(level, 2) - Mathf.Pow(1, 2))/Mathf.Pow(multiplicador,2)) * divisorXP/2);
 
         return xp;
     } 
@@ -76,7 +76,8 @@ public class PlayerController : MonoBehaviour
             UIManager.Instance.SetPlayerCauntion(currentHealth <= MaxHealth * 0.2f);
 
             UIManager.Instance.UpdateLife(MaxHealth, currentHealth);
-            // Level UP!
+
+            LevelUpManager.Instance.LevelUPAvalible();
         }
 
         UIManager.Instance.UpdateXP(HowManyToNextLevel(nivelBase + 1), (int)xp, nivelBase);

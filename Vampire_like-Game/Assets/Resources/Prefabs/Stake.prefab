@@ -175,7 +175,9 @@ MonoBehaviour:
   stakeAutoDestroyTimer: 1
   currentStakeTime: 0
   hasHit: 0
-  MaxNumHit: 1
+  maxNumHit: 0
+  damage: 0
+  speedMultiplier: 0
 --- !u!82 &1573296527036357978
 AudioSource:
   m_ObjectHideFlags: 0
@@ -188,7 +190,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f63a7691a3f4370419ad7db9ab5f49ff, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.9
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -16,10 +16,12 @@ public class MenuUi : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
+            ExitButtonSound();
             Credits.SetActive(false);
         }
         if(start && Input.anyKey)
         {
+            EnterButtonSound();
             StartGame();
         }
     }
@@ -38,6 +40,16 @@ public class MenuUi : MonoBehaviour
     {
 
         SceneManager.LoadScene("Game");
+    }
+
+    public void EnterButtonSound()
+    {
+        AudioManager.Instance.PlaySound(AudioManager.Sound.UIButtonIn, Vector3.zero);
+    }
+
+    public void ExitButtonSound()
+    {
+        AudioManager.Instance.PlaySound(AudioManager.Sound.UIButtonOut, Vector3.zero);
     }
 
     public void Quit()

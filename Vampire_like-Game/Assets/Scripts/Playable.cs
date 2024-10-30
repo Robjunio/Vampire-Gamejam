@@ -17,7 +17,7 @@ public class Playable : MonoBehaviour
         ObjectPool = pool;
 
         audioSource.clip = clip;
-        audioSource.volume = 0.1f;
+        audioSource.volume = 0.7f;
         audioSource.maxDistance = 100f;
         audioSource.spatialBlend = 1f;
         audioSource.rolloffMode = AudioRolloffMode.Linear;

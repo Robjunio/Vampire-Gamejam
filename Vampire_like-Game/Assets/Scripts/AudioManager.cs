@@ -13,7 +13,9 @@ public class AudioManager : MonoBehaviour
         HeroDying,
         Walk,
         Potion,
-        Shield
+        Shield,
+        UIButtonIn,
+        UIButtonOut
     }
 
     [System.Serializable]

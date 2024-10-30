@@ -7,8 +7,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance; 
+    public static UIManager Instance;
 
+    [SerializeField] public ObjectPool ValueFeedback;
     public enum Panels
     {
         Pause,
@@ -38,6 +39,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider Xp;
     [SerializeField] TMP_Text level;
 
+    [SerializeField] GameObject garlicIcon;
+    [SerializeField] GameObject garlicText;
+    [SerializeField] GameObject holyWaterIcon;
+
     UnityEngine.Rendering.Universal.UniversalAdditionalCameraData additionalCameraData;
     private bool gamePaused;
 
@@ -63,10 +68,12 @@ public class UIManager : MonoBehaviour
     {
         if (panelsRef[0].panelObj.activeSelf)
         {
+            EnterButtonSound();
             DeactivatePanel(Panels.Pause);
         }
         else
         {
+            ExitButtonSound();
             ActivatePanel(Panels.Pause);
         }
     }
@@ -97,7 +104,12 @@ public class UIManager : MonoBehaviour
     public void ActivateLevelUpPanel()
     {
         gamePaused = true;
-        ActivatePanel(Panels.Defeat);
+        ActivatePanel(Panels.LevelUp);
+    }
+
+    public void DeactivateLevelUpPanel()
+    {
+        DeactivatePanel(Panels.LevelUp);
     }
 
     public void DeactivatePanel(Panels panel)
@@ -115,6 +127,17 @@ public class UIManager : MonoBehaviour
             }
         }
         gamePaused = false;
+    }
+
+    public void UnlockGarlic()
+    {
+        garlicIcon.SetActive(true);
+        garlicText.SetActive(true);
+    }
+
+    public void UnlockHolyWater()
+    {
+        holyWaterIcon.SetActive(true);
     }
 
     public void ActivateText(bool value)
@@ -184,7 +207,18 @@ public class UIManager : MonoBehaviour
 
     public void ActivateVictory(int hour)
     {
+        gamePaused = true;
         ActivatePanel(Panels.Victory);
+    }
+
+    public void EnterButtonSound()
+    {
+        AudioManager.Instance.PlaySound(AudioManager.Sound.UIButtonIn, Vector3.zero);
+    }
+
+    public void ExitButtonSound()
+    {
+        AudioManager.Instance.PlaySound(AudioManager.Sound.UIButtonOut, Vector3.zero);
     }
 
     private void OnEnable()

@@ -42,6 +42,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: UI
+    uniqueID: 1662377199
+    locked: 0
   - name: Map
     uniqueID: 2870009405
     locked: 0

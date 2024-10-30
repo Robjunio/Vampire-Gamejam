@@ -141,6 +141,12 @@ public class Enemy : MonoBehaviour
         {
             damage = 100;
         }
+        if (damage > 0) {
+            var feedback = UIManager.Instance.ValueFeedback.GetFreeObject();
+            feedback.gameObject.SetActive(true);
+            feedback.GetComponent<DamageFeedback>().UpdateValue(damage.ToString());
+            feedback.transform.position = transform.position;
+        }
 
         life -= damage;
 
@@ -181,6 +187,11 @@ public class Enemy : MonoBehaviour
         }
 
         life -= damage;
+
+        var feedback = UIManager.Instance.ValueFeedback.GetFreeObject();
+        feedback.gameObject.SetActive(true);
+        feedback.GetComponent<DamageFeedback>().UpdateValue(damage.ToString());
+        feedback.transform.position = transform.position;
 
         Debug.Log("Enemy is being damaged by garlic." + damage);
 
@@ -288,12 +299,17 @@ public class Enemy : MonoBehaviour
             specialEffect.SetActive(false);
         }
 
+        alpha.Complete();
+
         BehindMaskRenderer.enabled = true;
         MaskRenderer.enabled = false;
+        
 
         if(circleCollider != null)
         {
             circleCollider.enabled = true;
         }
     }
+
+
 }
